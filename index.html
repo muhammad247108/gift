@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanan - My Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg,  #ffc0cb 0%, #ff69b4 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: linear-gradient(45deg, #fff, #f8f9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 30px rgba(255,255,255,0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Profile Picture */
+        .profile {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            border: 8px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: pulse 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: url('https://i.postimg.cc/kGBVyDHD/IMG-20260326-WA0003.jpg') center/cover;
+        }
+
+        .profile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 80px rgba(255,255,255,0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Love Quote */
+        .love-quote {
+            background: rgba(255,255,255,0.95);
+            padding: 30px 40px;
+            border-radius: 25px;
+            margin: 40px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            font-size: 1.3rem;
+            color: #555;
+            font-style: italic;
+            position: relative;
+        }
+
+        .love-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .photo-item {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            margin-bottom: 20px;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+       .photo-frame.frame1 { 
+    background: url('https://i.postimg.cc/0NPbBV4H/IMG-20260326-WA0001.jpg') center/cover; 
+}
+.photo-frame.frame2 { 
+    background: url('https://i.postimg.cc/R01SzJhv/Screenshot-20260326-032748-Gallery.jpg') center/cover; 
+}
+.photo-frame.frame3 { 
+    background: url('https://i.postimg.cc/3rVWT86G/IMG-20260326-WA0006.jpg') center/cover; 
+}
+.photo-frame.frame4 { 
+    background: url('https://i.postimg.cc/jdf2dV0p/IMG-20260326-WA0008.jpg') center/cover; 
+}
+        .photo-caption {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 8px;
+        }
+
+        .photo-description {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            display: block;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Love Messages */
+        .messages {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NEW: Our Promises Section */
+        .promises {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            backdrop-filter: blur(15px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promises::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b9d, #ff1493, #ff69b4);
+        }
+
+        .promises-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .promises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .promise-card {
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(255,20,147,0.1));
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,107,157,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise-card::before {
+            content: '💍';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,107,157,0.3);
+            border-color: #ff6b9d;
+        }
+
+        .promise-card:hover::before {
+            opacity: 1;
+        }
+
+        .promise-text {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            padding: 60px 0 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats { gap: 20px; }
+            .stat-number { font-size: 2.5rem; }
+            .gallery { grid-template-columns: 1fr; gap: 30px; }
+            .profile { width: 220px; height: 220px; }
+            .promises-grid { grid-template-columns: 1fr; }
+        }
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove link underline */
+a {
+    text-decoration: none;
+}
+
+/* Improve photo items (make them look like buttons) */
+.photo-item {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+/* Hover text overlay */
+.photo-item::after {
+    content: "Click to open ❤️";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.photo-item:hover::after {
+    opacity: 1;
+}
+
+/* Glow effect on hover */
+.photo-item:hover {
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+}
+
+/* Click press effect */
+.photo-item:active {
+    transform: scale(0.97);
+}
+
+/* Stronger hover animation */
+.photo-frame:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 25px 60px rgba(255, 255, 255, 0.3);
+}
+
+/* Background animation */
+body {
+    background-size: 200% 200%;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Gradient movement */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="name">Sanan</h1>
+            <p class="subtitle">My Heart, My Soul, My Everything ❤️</p>
+            
+            <!-- Profile Picture -->
+            <div class="profile" onclick="createHeartExplosion(event)"></div>
+        </header>
+
+        <!-- Love Quote -->
+        <div class="love-quote">
+            "You are my sun, my moon, and all my stars."
+        </div>
+<!-- Stats -->
+<div class="stats">
+    <div class="stat">
+        <span class="stat-number" id="daysCounter">0</span>
+        <span class="stat-label">Days We've Been Together</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">My Heart Belongs To You</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">Forever</span>
+        <span class="stat-label">Our Love Story</span>
+    </div>
+</div>
+
+<!-- DAY COUNTER SCRIPT - Put this right after the stats section -->
+<script>
+    // 🎯🎯🎯 CHANGE THIS DATE TO YOUR ACTUAL START DATE! 🎯🎯🎯
+    // Format: Month Day, Year
+    
+    // Example: January 1, 2024
+    // Example: February 14, 2023 (Valentine's Day!)
+    // Example: March 15, 2024
+    
+    var startDate = new Date("May 30, 2025");
+    
+    // Calculate days
+    function calculateDays() {
+        var today = new Date();
+        var timeDiff = today.getTime() - startDate.getTime();
+        var daysTogether = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        
+        // Update the display
+        document.getElementById("daysCounter").innerHTML = daysTogether;
+    }
+    
+    // Run the calculation
+    calculateDays();
+</script>
+
+
+        <!-- Photo Gallery -->
+         <!-- Photo Gallery -->
+<div class="gallery">
+
+    <a href="page1.html">
+        <div class="photo-item" onclick="createHeartExplosion(event)">
+            <div class="photo-frame frame1"></div>
+            <div class="photo-caption">First Day ✨</div>
+            <div class="photo-description">The day my heart knew you were the one</div>
+        </div>
+    </a>
+
+    <a href="page2.html">
+        <div class="photo-item" onclick="createHeartExplosion(event)">
+            <div class="photo-frame frame2"></div>
+            <div class="photo-caption">My love 🌅</div>
+            <div class="photo-description">Exploring the world hand in hand</div>
+        </div>
+    </a>
+
+    <a href="page3.html">
+        <div class="photo-item" onclick="createHeartExplosion(event)">
+            <div class="photo-frame frame3"></div>
+            <div class="photo-caption">Sweet Moments 💕</div>
+            <div class="photo-description">Every second with you is pure magic</div>
+        </div>
+    </a>
+
+    <a href="page4.html">
+        <div class="photo-item" onclick="createHeartExplosion(event)">
+            <div class="photo-frame frame4"></div>
+            <div class="photo-caption">Forever Together 💍</div>
+            <div class="photo-description">My promise to love you always</div>
+        </div>
+    </a>
+
+</div>
+
+        <!-- Love Messages -->
+        <div class="messages">
+            <div class="message" data-delay="0">"Your smile makes my whole world brighter 🌟"</div>
+            <div class="message" data-delay="200">"Every moment with you feels like magic ✨"</div>
+            <div class="message" data-delay="400">"I choose you today, tomorrow, and always 💕"</div>
+        </div>
+
+        <!-- NEW: Our Promises Section -->
+        <div class="promises">
+            <h2 class="promises-title">Our Promises 💍</h2>
+            <div class="promises-grid">
+                <div class="promise-card" onclick="createHeartExplosion(event)">
+                    <div class="promise-text">
+                        I promise to love you through every sunrise and sunset, 
+                        in every season of life.
+                    </div>
+                </div>
+                <div class="promise-card" onclick="createHeartExplosion(event)">
+                    <div class="promise-text">
+                        I promise to be your safe place, your biggest cheerleader, 
+                        and your forever partner.
+                    </div>
+                </div>
+                <div class="promise-card" onclick="createHeartExplosion(event)">
+                    <div class="promise-text">
+                        I promise to choose you every single day, 
+                        no matter what life brings our way.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Made with endless love for my Sanan 💖<br>
+            Forever yours, [Maha]
+        </footer>
+    </div>
+
+    <script>
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💖', '💕', '💗', '💝', '🌹'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 7000);
+        }
+
+        setInterval(createHeart, 800);
+
+        // Heart Explosion on Click
+        function createHeartExplosion(e) {
+            for(let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.position = 'fixed';
+                    heart.style.left = e.clientX + 'px';
+                    heart.style.top = e.clientY + 'px';
+                    heart.style.fontSize = '20px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'float 2s ease-out forwards';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Rotating Messages
+        const messages = document.querySelectorAll('.message');
+        let messageIndex = 0;
+        
+        function showNextMessage() {
+            messages.forEach((msg, i) => {
+                msg.classList.remove('show');
+                setTimeout(() => {
+                    if (i === messageIndex) msg.classList.add('show');
+                }, msg.dataset.delay || 0);
+            });
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+
+        setInterval(showNextMessage, 4000);
+        showNextMessage();
+    </script>
+</head>
+</body>
+</html>
